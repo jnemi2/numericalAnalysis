@@ -1,9 +1,9 @@
 from sympy import *
 
 
-x = symbols('x')
-y = symbols('y')
-z = symbols('z')
+x = Symbol('x')
+y = Symbol('y')
+z = Symbol('z')
 
 exp = ["(1+2*y)/-3", "(15-x)/-4"]
 
