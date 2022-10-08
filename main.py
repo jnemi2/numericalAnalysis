@@ -21,7 +21,7 @@ def systems_jacobi(expressions, symbols_vector, start_vector, accuracy=10, break
         prev_vector = list(vector)
         for i in range(len(vector)):
             this_exp = expressions[i]
-            for sym, val in zip(symbols_vector, list(prev_vector)):
+            for sym, val in zip(symbols_vector, prev_vector):
                 this_exp = this_exp.subs(sym, val)
             vector[i] = N(this_exp, accuracy)
         operation_counter += 1
@@ -39,15 +39,11 @@ def systems_gauss_seidel(expressions, symbols_vector, start_vector, accuracy=10,
             print("Maximum operations exceeded!")
             break
         prev_vector = list(vector)
-        for i in range(len(vector) - 1):
+        for i in range(len(vector)):
             this_exp = expressions[i]
-            for sym, val in zip(symbols_vector, prev_vector):
+            for sym, val in zip(symbols_vector, vector):
                 this_exp = this_exp.subs(sym, val)
             vector[i] = N(this_exp, accuracy)
-        this_exp = expressions[len(vector) - 1]
-        for i in range(len(vector) - 1):
-            this_exp = this_exp.subs(symbols_vector[i], vector[i])
-        vector[len(vector) - 1] = N(this_exp, accuracy)
         operation_counter += 1
     return vector
 
