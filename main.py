@@ -5,6 +5,57 @@ x = Symbol('x')
 y = Symbol('y')
 z = Symbol('z')
 
+f = sympify("x**5+x**4-17*x**2+15*x-1")
+g = sympify("sqrt(3*E**(-x))")
+
+
+def newton_raphson(func, start, accu):
+    deriv = diff(func, x)
+    x0 = start
+    xn = N(x0 - (func.subs(x, x0)/deriv.subs(x, x0)), accu)
+    print(f"valor: {xn}")
+    while str(xn) != str(x0):
+        x0 = xn
+        xn = N(x0 - (func.subs(x, x0)/deriv.subs(x, x0)), accu)
+        print(f"valor: {xn}")
+    return xn
+
+
+def punto_fijo(g, start, iters, accu=5):
+    xn = start
+    for i in range(iters):
+        xn = N(g.subs(x, xn), accu)
+        print(f"valor: {xn}")
+    return xn
+
+
+def bolzano(func, start, end, accu=5):
+    a = start
+    b = end
+    c = None
+    y = Symbol('y')
+    average = (x+y)/2
+    prev_c = ''
+    if (N(func.subs(x, b), accu)*N(func.subs(x, a), accu) < 0):
+        while (c != prev_c):
+            #print(a, b, a!=b)
+            prev_c = c
+            c = N(average.subs(x, a).subs(y, b), accu)
+            print(c)
+            temp = N(func.subs(x, a), accu)*N(func.subs(x, c), accu)
+            if (temp < 0):
+                b = c
+            elif (temp > 0):
+                a = c
+            else:
+                break
+    else:
+        print(f"No sign change detected between f({start}) and f({end})")
+    return c
+
+
+# ___________________________________________________________________________
+
 exp = ["(1+2*y)/-3", "(15-x)/-4"]
 
 
@@ -50,3 +101,8 @@ def systems_gauss_seidel(expressions, symbols_vector, start_vector, accuracy=10,
 
 systems_jacobi(exp, (x, y), (0, 0), accuracy=5)
 systems_gauss_seidel(exp, (x, y), (0, 0), accuracy=5)
+
+
+# newton_raphson(f, 2, 8)
+# punto_fijo(g, 1.5, 200, accu=20)
+# bolzano(f, -2, -0.5, accu=7)
