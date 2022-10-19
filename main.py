@@ -73,7 +73,7 @@ def systems_jacobi(expressions, symbols_vector, start_vector, accuracy=10, break
     prev_vector = None
     op_counter = 0
     while prev_vector != vector:
-        print(op_counter, vector)
+        print("op:", op_counter, "valor:", vector)
         if op_counter >= break_after:
             print("Maximum operations exceeded!")
             break
@@ -93,7 +93,7 @@ def systems_gauss_seidel(expressions, symbols_vector, start_vector, accuracy=10,
     prev_vector = None
     op_counter = 0
     while prev_vector != vector:
-        print(op_counter, vector)
+        print("op:", op_counter, "valor:", vector)
         if op_counter >= break_after:
             print("Maximum operations exceeded!")
             break
