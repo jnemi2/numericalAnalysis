@@ -63,10 +63,10 @@ def systems_jacobi(expressions, symbols_vector, start_vector, accuracy=10, break
     expressions = sympify(expressions)
     vector = list(start_vector)
     prev_vector = None
-    operation_counter = 0
+    op_counter = 0
     while prev_vector != vector:
-        print(operation_counter, vector)
-        if operation_counter >= break_after:
+        print(op_counter, vector)
+        if op_counter >= break_after:
             print("Maximum operations exceeded!")
             break
         prev_vector = list(vector)
@@ -75,7 +75,7 @@ def systems_jacobi(expressions, symbols_vector, start_vector, accuracy=10, break
             for sym, val in zip(symbols_vector, prev_vector):
                 this_exp = this_exp.subs(sym, val)
             vector[i] = N(this_exp, accuracy)
-        operation_counter += 1
+        op_counter += 1
     return vector
 
 
@@ -83,10 +83,10 @@ def systems_gauss_seidel(expressions, symbols_vector, start_vector, accuracy=10,
     expressions = sympify(expressions)
     vector = list(start_vector)
     prev_vector = None
-    operation_counter = 0
+    op_counter = 0
     while prev_vector != vector:
-        print(operation_counter, vector)
-        if operation_counter >= break_after:
+        print(op_counter, vector)
+        if op_counter >= break_after:
             print("Maximum operations exceeded!")
             break
         prev_vector = list(vector)
@@ -95,7 +95,7 @@ def systems_gauss_seidel(expressions, symbols_vector, start_vector, accuracy=10,
             for sym, val in zip(symbols_vector, vector):
                 this_exp = this_exp.subs(sym, val)
             vector[i] = N(this_exp, accuracy)
-        operation_counter += 1
+        op_counter += 1
     return vector
 
 
