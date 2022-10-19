@@ -5,9 +5,6 @@ x = Symbol('x')
 y = Symbol('y')
 z = Symbol('z')
 
-f = sympify("x**5+x**4-17*x**2+15*x-1")
-g = sympify("sqrt(3*E**(-x))")
-
 
 def newton_raphson(func, start, accu, break_after=200):
     op_counter = 0
@@ -110,6 +107,8 @@ def systems_gauss_seidel(expressions, symbols_vector, start_vector, accuracy=10,
 systems_jacobi(exp, (x, y), (0, 0), accuracy=5)
 systems_gauss_seidel(exp, (x, y), (0, 0), accuracy=5)
 
+f = sympify("x**5+x**4-17*x**2+15*x-1")
+g = sympify("sqrt(3*E**(-x))")
 
 # newton_raphson(f, 2, 8)
 # punto_fijo(g, 1.5, 200, accu=20)
