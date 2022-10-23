@@ -103,3 +103,15 @@ def systems_gauss_seidel(expressions, symbols_vector, start_vector, accuracy=10,
             vector[i] = sympy.N(this_exp, accuracy)
         op_counter += 1
     return vector
+
+
+# ____________________________
+
+
+def trapecios(func, start, end, h, accu=10):
+    x = sympy.Symbol('x')
+    integral = sympy.N(func.subs(x, start), accu) + sympy.N(func.subs(x, end), accu)
+    integral = h * integral / 2
+    for i in range(1, int((end - start) / h)):
+        integral += h * sympy.N(func.subs(x, (i*h + start)), accu)
+    return integral

@@ -133,5 +133,16 @@ cn.systems_gauss_seidel(exp, (x, y, z),  (1, 1/3, 1.5), accuracy=4, break_after=
 
 # ___________________
 # 11) c)
+"""
 exp = ["(4+2*y-z)/4", "(-2-z)/4", "(9-x+y)/6"]
 cn.systems_gauss_seidel(exp, (x, y, z),  (1, -0.5, 1.5), accuracy=4, break_after=100)
+"""
+# ______________________________________
+
+
+# EJERCICIOS UNIDAD III
+
+# ___________________
+# Ejemplo
+f = sympify("E**x")
+print(cn.trapecios(f, 0, 1, 0.2))
