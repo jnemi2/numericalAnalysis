@@ -144,5 +144,12 @@ cn.systems_gauss_seidel(exp, (x, y, z),  (1, -0.5, 1.5), accuracy=4, break_after
 
 # ___________________
 # Ejemplo
+"""
 f = sympify("E**x")
-print(cn.trapecios(f, 0, 1, 0.2))
+print(cn.trapecios(f, 0, 1, h=0.2))
+"""
+
+# ___________________
+# 6) a)
+f = sympify("(x+1)/x")
+print(cn.trapecios(f, 1, 5, h=0.025))
