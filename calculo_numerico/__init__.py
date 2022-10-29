@@ -115,3 +115,15 @@ def trapecios(func, start, end, h, accu=10):
     for i in range(1, int((end - start) / h)):
         integral += h * sympy.N(func.subs(x, (i*h + start)), accu)
     return integral
+
+
+def simpson(func, start, end, h, accu=10):
+    x = sympy.Symbol('x')
+    integral = sympy.N(func.subs(x, start), accu) + sympy.N(func.subs(x, end), accu)
+    for i in range(1, int((end - start) / h)):
+        temp = sympy.N(func.subs(x, (i*h + start)), accu)
+        if i % 2 == 0:
+            integral += 2 * temp
+        else:
+            integral += 4 * temp
+    return integral * h / 3
