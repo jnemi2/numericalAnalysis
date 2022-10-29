@@ -85,7 +85,7 @@ def systems_jacobi(expressions, symbols_vector, start_vector, accuracy=10, break
     return vector
 
 
-def systems_gauss_seidel(expressions, symbols_vector, start_vector, accuracy=10, break_after=200):
+def systems_gauss_seidel(expressions, symbols_vector, start_vector, accu=10, break_after=200):
     expressions = sympy.sympify(expressions)
     vector = list(start_vector)
     prev_vector = None
@@ -100,7 +100,7 @@ def systems_gauss_seidel(expressions, symbols_vector, start_vector, accuracy=10,
             this_exp = expressions[i]
             for sym, val in zip(symbols_vector, vector):
                 this_exp = this_exp.subs(sym, val)
-            vector[i] = sympy.N(this_exp, accuracy)
+            vector[i] = sympy.N(this_exp, accu)
         op_counter += 1
     return vector
 

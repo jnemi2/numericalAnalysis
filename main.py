@@ -221,4 +221,4 @@ print(cn.trapecios(f, 0.0000000001, 1, h=0.1))
 # E3
 
 exp = ["(4+y)/302", "(2-2*x)/6"]
-cn.systems_gauss_seidel(exp, (x, y), (0.013, 0.33), accuracy=6)
+cn.systems_gauss_seidel(exp, (x, y), (0.013, 0.33), accu=6)
