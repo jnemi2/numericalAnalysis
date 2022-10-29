@@ -114,28 +114,28 @@ print(N(g_prima, 5), -1/N(h_prima, 5))  # si g' y h' son perpendiculares en alph
 # 9) a)
 """
 exp = ["(1+2*y)/5", "(15-x)/7"]
-cn.systems_gauss_seidel(expressions=exp, symbols_vector=(x, y),  start_vector=(0.2, 2), accuracy=5, break_after=100)
+cn.systems_gauss_seidel(expressions=exp, symbols_vector=(x, y),  start_vector=(0.2, 2), accu=5, break_after=100)
 """
 
 # ___________________
 # 11) a)
 """
 exp = ["(26+2*y-4*z)/8", "(-3-x+4*z)/7", "(48-2*x+3*y)/16"]
-cn.systems_gauss_seidel(exp, (x, y, z),  (3, 0, 3), accuracy=4, break_after=100)
+cn.systems_gauss_seidel(exp, (x, y, z),  (3, 0, 3), accu=4, break_after=100)
 """
 
 # ___________________
 # 11) b)
 """
 exp = ["(2+y)/2", "(1-z)/3", "(9-3*x+y)/6"]
-cn.systems_gauss_seidel(exp, (x, y, z),  (1, 1/3, 1.5), accuracy=4, break_after=100)
+cn.systems_gauss_seidel(exp, (x, y, z),  (1, 1/3, 1.5), accu=4, break_after=100)
 """
 
 # ___________________
 # 11) c)
 """
 exp = ["(4+2*y-z)/4", "(-2-z)/4", "(9-x+y)/6"]
-cn.systems_gauss_seidel(exp, (x, y, z),  (1, -0.5, 1.5), accuracy=4, break_after=100)
+cn.systems_gauss_seidel(exp, (x, y, z),  (1, -0.5, 1.5), accu=4, break_after=100)
 """
 # ______________________________________
 
@@ -193,7 +193,7 @@ cn.bolzano(f, -2, 0, accu=7)
 # 2)
 """
 exp = ["(400-0.2*y+38*z)/200", "(-1500-0.2*x-12*z)/(-500)", "(1200+x-8*y)/300"]
-cn.systems_gauss_seidel(exp, (x, y, z), (2, 3, 4), accuracy=5)
+cn.systems_gauss_seidel(exp, (x, y, z), (2, 3, 4), accu=5)
 """
 
 # ___________________
