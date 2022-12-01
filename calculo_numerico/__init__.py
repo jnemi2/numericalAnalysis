@@ -108,6 +108,9 @@ def systems_gauss_seidel(expressions, symbols_vector, start_vector, accu=10, bre
 # ____________________________
 
 
+"""
+Trapecios: h/2 * (E + 2*Interiores)
+"""
 def trapecios(func, start, end, h, accu=10):
     x = sympy.Symbol('x')
     integral = sympy.N(func.subs(x, start), accu) + sympy.N(func.subs(x, end), accu)
@@ -117,6 +120,9 @@ def trapecios(func, start, end, h, accu=10):
     return integral
 
 
+"""
+Simpson: h/3 * (E + 4*I + 2*P)
+"""
 def simpson(func, start, end, h, accu=10):
     x = sympy.Symbol('x')
     integral = sympy.N(func.subs(x, start), accu) + sympy.N(func.subs(x, end), accu)
@@ -137,7 +143,7 @@ def euler(fun, xini, vinit, paso, vtp):
     wn = vinit
     i = xini
     while i < vtp:
-        wn = wn + paso * fun.subs({x: i, y: wn})
+        wn = wn + paso * sympy.N(fun.subs({x: i, y: wn}))
         i += paso
         print(f"{wn}")
 
@@ -149,9 +155,9 @@ def taylor(fun, xini, vinit, paso, vtp):
     i = xini
     contador = 0
     while i < (vtp-paso):
-        wn = wn + fun.subs({x: i, y: wn}) * paso + (1/2) * (sympy.diff(fun, x).subs({x: i, y: wn})
-                                                            + sympy.diff(fun, y).subs({x: i, y: wn})
-                                                            * fun.subs({x: i, y: wn})) * (paso**2)
+        wn = wn + sympy.N(fun.subs({x: i, y: wn})) * paso + (1/2) * sympy.N(sympy.diff(fun, x).subs({x: i, y: wn})
+                                                            + sympy.N(sympy.diff(fun, y).subs({x: i, y: wn}))
+                                                            * sympy.N(fun.subs({x: i, y: wn}))) * (paso**2)
         i += paso
         contador += 1
         print(f"w{contador} = {wn}")

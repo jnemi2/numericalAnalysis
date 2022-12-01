@@ -229,5 +229,48 @@ f = sympify("(sin(0.02*x))/x")
 print(cn.trapecios(f, 0.0000000001, 1, h=0.1), "<- trapecios")
 print(cn.simpson(f, 0.0000000001, 1, h=0.1), "<- simpson")"""
 
+# ____________________________________________________
+
+# Practica Simpson
+
+# 9) c)
+"""
+f = sympify("(1-cos(x))/x")
+
+x = Symbol('x')
+integral = 0
+for i in range(1, 10):
+    val = N(f.subs(x, i/10))
+    if i % 2 == 0:
+        integral += 2 * val
+    else:
+        integral += 4 * val
+integral += N(f.subs(x, 1.0))
+print(integral*0.1/3)
+"""
+
+# 10)
+"""
+f = sympify("4*(x**3)+6*(x**2)-2*x+6")
+print(cn.simpson(f, 0, 3, h=1.5))
+"""
+
+# ____________________________________________________
+
+# Practica Ecuaciones Diferenciales
+
+# 5) a)
+f = sympify("-y+x+1")
+cn.euler(f, 0, 1, 0.1, 1)
+cn.taylor(f, 0, 1, 0.1, 1)
+
+# 5) c)
+f = sympify("2*y/x+(x**2)*(E**x)")
+cn.euler(f, 1, 0, 0.05, 2)
+cn.taylor(f, 1, 0, 0.05, 2)
+
+
+"""
 fun3 = sympify("-y+x+1")
 cn.taylor(fun3, 0, 1, 0.0001, 1)
+"""
