@@ -224,6 +224,10 @@ exp = ["(4+y)/302", "(2-2*x)/6"]
 cn.systems_gauss_seidel(exp, (x, y), (0.013, 0.33), accu=6)
 """
 
+"""
 f = sympify("(sin(0.02*x))/x")
 print(cn.trapecios(f, 0.0000000001, 1, h=0.1), "<- trapecios")
-print(cn.simpson(f, 0.0000000001, 1, h=0.1), "<- simpson")
+print(cn.simpson(f, 0.0000000001, 1, h=0.1), "<- simpson")"""
+
+fun3 = sympify("-y+x+1")
+cn.taylor(fun3, 0, 1, 0.0001, 1)

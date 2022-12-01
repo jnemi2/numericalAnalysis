@@ -127,3 +127,31 @@ def simpson(func, start, end, h, accu=10):
         else:
             integral += 4 * temp
     return integral * h / 3
+
+# ____________________________
+
+
+def euler(fun, xini, vinit, paso, vtp):
+    x = sympy.Symbol('x')
+    y = sympy.Symbol('y')
+    wn = vinit
+    i = xini
+    while i < vtp:
+        wn = wn + paso * fun.subs({x: i, y: wn})
+        i += paso
+        print(f"{wn}")
+
+
+def taylor(fun, xini, vinit, paso, vtp):
+    x = sympy.Symbol('x')
+    y = sympy.Symbol('y')
+    wn = vinit
+    i = xini
+    contador = 0
+    while i < (vtp-paso):
+        wn = wn + fun.subs({x: i, y: wn}) * paso + (1/2) * (sympy.diff(fun, x).subs({x: i, y: wn})
+                                                            + sympy.diff(fun, y).subs({x: i, y: wn})
+                                                            * fun.subs({x: i, y: wn})) * (paso**2)
+        i += paso
+        contador += 1
+        print(f"w{contador} = {wn}")
