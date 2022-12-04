@@ -2,6 +2,9 @@ import sympy
 
 
 def newton_raphson(func, start, accu=5, break_after=200):
+    """
+    x1 = x0 - (f(x0)/f'(x0))
+    """
     op_counter = 0
     x = sympy.Symbol("x")
     deriv = sympy.diff(func, x)
@@ -108,10 +111,10 @@ def systems_gauss_seidel(expressions, symbols_vector, start_vector, accu=10, bre
 # ____________________________
 
 
-"""
-Trapecios: h/2 * (E + 2*Interiores)
-"""
 def trapecios(func, start, end, h, accu=10):
+    """
+    Trapecios: h/2 * (E + 2*Interiores)
+    """
     x = sympy.Symbol('x')
     integral = sympy.N(func.subs(x, start), accu) + sympy.N(func.subs(x, end), accu)
     integral = h * integral / 2
@@ -120,10 +123,10 @@ def trapecios(func, start, end, h, accu=10):
     return integral
 
 
-"""
-Simpson: h/3 * (E + 4*I + 2*P)
-"""
 def simpson(func, start, end, h, accu=10):
+    """
+    Simpson: h/3 * (E + 4*I + 2*P)
+    """
     x = sympy.Symbol('x')
     integral = sympy.N(func.subs(x, start), accu) + sympy.N(func.subs(x, end), accu)
     for i in range(1, int((end - start) / h)):
