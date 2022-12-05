@@ -23,6 +23,9 @@ def newton_raphson(func, start, accu=5, break_after=200):
 
 
 def punto_fijo(g, start, accu=5, max_iters=200):
+    """
+    x1 = g(x0)
+    """
     x = sympy.Symbol("x")
     xn = start
     prev = None
@@ -64,11 +67,19 @@ def bolzano(func, start, end, accu=5, break_after=200):
         print("No sign change detected between f(", start, ") and f(", end, ")")
     return c
 
-
 # ____________________________
 
 
+"""
+EL SISTEMA DEBE SER DE DIAGONAL DOMINANTE
+"""
+
+
 def systems_jacobi(expressions, symbols_vector, start_vector, accuracy=10, break_after=200):
+    """
+    x1 = (e-b*y0)/a
+    y1 = (f-c*x0)/d
+    """
     expressions = sympy.sympify(expressions)
     vector = list(start_vector)
     prev_vector = None
@@ -89,6 +100,10 @@ def systems_jacobi(expressions, symbols_vector, start_vector, accuracy=10, break
 
 
 def systems_gauss_seidel(expressions, symbols_vector, start_vector, accu=10, break_after=200):
+    """
+    x1 = (e-b*y0)/a
+    y1 = (f-c*x1)/d
+    """
     expressions = sympy.sympify(expressions)
     vector = list(start_vector)
     prev_vector = None
@@ -114,6 +129,7 @@ def systems_gauss_seidel(expressions, symbols_vector, start_vector, accu=10, bre
 def trapecios(func, start, end, h, accu=10):
     """
     Trapecios: h/2 * (E + 2*Interiores)
+    Error < (b-a)*(h**2)*M/12
     """
     x = sympy.Symbol('x')
     integral = sympy.N(func.subs(x, start), accu) + sympy.N(func.subs(x, end), accu)
@@ -126,6 +142,7 @@ def trapecios(func, start, end, h, accu=10):
 def simpson(func, start, end, h, accu=10):
     """
     Simpson: h/3 * (E + 4*I + 2*P)
+    Error < (b-a)*(h**4)*M/180
     """
     x = sympy.Symbol('x')
     integral = sympy.N(func.subs(x, start), accu) + sympy.N(func.subs(x, end), accu)
@@ -141,6 +158,9 @@ def simpson(func, start, end, h, accu=10):
 
 
 def euler(fun, xini, vinit, paso, vtp):
+    """
+    w1 = w0 + f(x0, w0)*h
+    """
     x = sympy.Symbol('x')
     y = sympy.Symbol('y')
     wn = vinit
@@ -152,6 +172,9 @@ def euler(fun, xini, vinit, paso, vtp):
 
 
 def taylor(fun, xini, vinit, paso, vtp):
+    """
+    w1 = w0 + f(x0, w0) * h + 1/2 * h**2 * (f'x(x0, w0) + f'y(x0, w0) * f(x0, w0))
+    """
     x = sympy.Symbol('x')
     y = sympy.Symbol('y')
     wn = vinit

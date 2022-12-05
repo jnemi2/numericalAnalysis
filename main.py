@@ -260,17 +260,25 @@ print(cn.simpson(f, 0, 3, h=1.5))
 # Practica Ecuaciones Diferenciales
 
 # 5) a)
+"""
 f = sympify("-y+x+1")
 cn.euler(f, 0, 1, 0.1, 1)
 cn.taylor(f, 0, 1, 0.1, 1)
+"""
 
 # 5) c)
+"""
 f = sympify("2*y/x+(x**2)*(E**x)")
 cn.euler(f, 1, 0, 0.05, 2)
 cn.taylor(f, 1, 0, 0.05, 2)
-
+"""
 
 """
 fun3 = sympify("-y+x+1")
 cn.taylor(fun3, 0, 1, 0.0001, 1)
 """
+
+
+
+g = sympify("sqrt(3*(E**(-x)))")
+cn.punto_fijo(g, 1.5, accu=7)
