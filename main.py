@@ -279,6 +279,35 @@ cn.taylor(fun3, 0, 1, 0.0001, 1)
 """
 
 
-
+"""
 g = sympify("sqrt(3*(E**(-x)))")
 cn.punto_fijo(g, 1.5, accu=7)
+"""
+
+# ____________________________________________________
+
+# Examen Final
+
+# E1
+"""
+f = sympify("3*(E**(-2*x))+0.02*(x**2)-7")
+cn.bolzano(f, -10, 0, accu=7)
+"""
+
+# E2
+"""
+f = sympify("sin(0.02*x)/x")
+
+x = Symbol('x')
+integral = 0.02
+for i in range(1, 10):
+    val = 2*N(f.subs(x, i/10))
+    integral += val
+
+integral += N(f.subs(x, 1.0))
+print(integral*0.1/2)
+"""
+
+# E3
+f = sympify("0.02*x*y")
+cn.euler(f, 0, 2, 0.001, 1)

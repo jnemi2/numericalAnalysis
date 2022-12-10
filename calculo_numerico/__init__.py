@@ -165,7 +165,7 @@ def euler(fun, xini, vinit, paso, vtp):
     y = sympy.Symbol('y')
     wn = vinit
     i = xini
-    while i < vtp:
+    while i <= vtp:
         wn = wn + paso * sympy.N(fun.subs({x: i, y: wn}))
         i += paso
         print(f"{wn}")
